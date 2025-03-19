@@ -1,7 +1,7 @@
 interface Url {
-    TASKS: string
+    NEW: string
 }
 
 export const URL: Url = {
-    TASKS: "/tasks"
+    NEW: "/TicketPage/new"
 }
