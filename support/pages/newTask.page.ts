@@ -31,14 +31,16 @@ export class NewTaskPage {
     }
 
     async createTicket(ticketDetails: {
-        title: string,
+        title?: string,
         description: string,
         priority: string,
         progress: string,
         status: string
     }) {
         await this.navigateToNewTicketForm();
-        await this.fillTicketTitle(ticketDetails.title);
+        if (ticketDetails.title) {
+            await this.fillTicketTitle(ticketDetails.title);
+        }
         await this.fillTicketDescription(ticketDetails.description);
         await this.selectPriority(ticketDetails.priority);
         await this.setProgress(ticketDetails.progress);
