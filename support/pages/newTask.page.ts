@@ -14,7 +14,6 @@ export class NewTaskPage {
     async fillTicketDescription(description: string) {
         await this.page.getByTestId('description-textarea').fill(description);
     }
-
     async selectPriority(priorityLevel: string) {
         await this.page.getByTestId(`priority-${priorityLevel}-radio`).check();
     }
@@ -45,5 +44,13 @@ export class NewTaskPage {
         await this.setProgress(ticketDetails.progress);
         await this.selectStatus(ticketDetails.status);
         await this.submitTicket();
+    }
+
+    async findLastTicketCardByTitle(title: string) {
+        return this.page.getByTestId('ticket-list').nth(1)
+            .locator('div[class*="flex flex-col"]')
+            .filter({ hasText: title })
+            .getByText(title)
+            .last();
     }
 }
