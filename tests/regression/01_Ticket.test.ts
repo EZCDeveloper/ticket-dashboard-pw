@@ -47,6 +47,7 @@ test.describe('TS01_Crud Ticket', () => {
             // TIP: try to create the task by API (this step)
             await newTaskPage.createTicket(TEST_DATA.ticket[1]);
 
-
+            // 3. click on las ticket NOT WORKING
+            (await newTaskPage.findLastTicketCardByTitle(TEST_DATA.ticket[1].title)).click()
         })
 })
